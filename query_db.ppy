@@ -1,0 +1,16 @@
+import psycopg2
+
+CONNECTION_STRING = "postgresql://neondb_owner:npg_ItHQYxhB76ov@ep-shy-mouse-a4r8v3b3-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+
+conn = psycopg2.connect("postgresql://neondb_owner:npg_ItHQYxhB76ov@ep-shy-mouse-a4r8v3b3-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
+
+cursor = conn.cursor()
+
+cursor.execute("SELECT * FROM customer;")
+
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
+
+cursor.close()
+conn.close()
